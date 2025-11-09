@@ -24,7 +24,7 @@ export class SoftwareService {
     const [list, total] = await queryBuilder
       .skip(offset)
       .take(pageSize)
-      .orderBy('software.updatedAt', 'DESC')
+      .orderBy('software.updated_at', 'DESC')
       .getManyAndCount();
 
     return { list, total, current, pageSize };
@@ -37,7 +37,7 @@ export class SoftwareService {
       os_version: data.os_version,
       arch: data.arch,
       typ: data.typ,
-      downloadUrl: data.download_url,
+      download_url: data.download_url,
       description: data.description,
     });
     await this.softwareRepo.save(software);
@@ -55,7 +55,7 @@ export class SoftwareService {
     if (data.os_version) updateData['os_version'] = data.os_version;
     if (data.arch) updateData['arch'] = data.arch;
     if (data.typ) updateData['typ'] = data.typ;
-    if (data.download_url) updateData['downloadUrl'] = data.download_url;
+    if (data.download_url) updateData['download_url'] = data.download_url;
     if (data.description !== undefined) updateData['description'] = data.description;
 
     await this.softwareRepo.update(id, updateData);

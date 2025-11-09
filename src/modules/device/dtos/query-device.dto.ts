@@ -25,4 +25,16 @@ export class QueryDeviceDto {
   @IsOptional()
   @IsString()
   typ?: string; // 按软件类型筛选
+
+  @IsOptional()
+  @IsString()
+  os_version?: string;
+
+  @IsOptional()
+  @IsString()
+  arch?: string;
+
+  // @IsOptional()
+  // @IsString()
+  // request_time?: string;
 }

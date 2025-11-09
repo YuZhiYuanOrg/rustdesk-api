@@ -9,7 +9,7 @@ export class ReviewEntity {
   device_id: string;
 
   @Column({ name: 'download_url', comment: '返回的下载地址' })
-  downloadUrl: string;
+  download_url: string;
 
   @CreateDateColumn({ name: 'response_time', type: 'datetime', comment: '响应时间' })
   responseTime: Date;

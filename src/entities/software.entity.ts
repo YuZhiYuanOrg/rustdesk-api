@@ -18,11 +18,11 @@ export class SoftwareEntity {
   typ: string;
 
   @Column({ name: 'download_url', comment: '软件下载地址' })
-  downloadUrl: string;
+  download_url: string;
 
   @Column({ comment: '配置描述', nullable: true })
   description?: string;
 
   @UpdateDateColumn({ name: 'updated_at', type: 'datetime', comment: '最后更新时间' })
-  updatedAt: Date;
+  updated_at: Date;
 }

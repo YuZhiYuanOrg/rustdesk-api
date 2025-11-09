@@ -13,7 +13,8 @@ export class DeviceService {
 
   // 查询设备列表（分页+筛选）
   async findAll(query: QueryDeviceDto) {
-    const { current, pageSize, os, device_id, typ } = query;
+    //, request_time
+    const { current, pageSize, os, device_id, typ, os_version, arch } = query;
     const offset = (current - 1) * pageSize;
 
     // 构建查询条件
@@ -21,6 +22,9 @@ export class DeviceService {
     if (os) queryBuilder.andWhere('device.os = :os', { os });
     if (device_id) queryBuilder.andWhere('device.device_id = :device_id', { device_id: device_id });
     if (typ) queryBuilder.andWhere('device.typ = :typ', { typ });
+    if (os_version) queryBuilder.andWhere('device.os_version = :os_version', { os_version });
+    if (arch) queryBuilder.andWhere('device.arch = :arch', { arch });
+    //if (request_time) queryBuilder.andWhere('device.request_time LIKE :request_time', { request_time: `%${request_time}%` });
 
     // 分页查询
     const [list, total] = await queryBuilder

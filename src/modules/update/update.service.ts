@@ -39,7 +39,7 @@ export class UpdateService {
     // 3. 保存审查记录
     await this.reviewService.create({
       device_id: device_id,
-      downloadUrl: software.downloadUrl,
+      download_url: software.download_url,
       os,
       os_version: os_version,
       arch,
@@ -48,7 +48,7 @@ export class UpdateService {
 
     // 4. 返回结果（版本可选，这里默认返回空）
     return {
-      download_url: software.downloadUrl,
+      download_url: software.download_url,
       message: '更新地址获取成功',
       version: '', // 可根据实际需求从software表扩展version字段
     };
