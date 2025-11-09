@@ -13,13 +13,15 @@ export class SoftwareService {
 
   // 查询软件配置列表
   async findAll(query: QuerySoftwareDto) {
-    const { current, pageSize, os, arch, typ } = query;
+    const { current, pageSize, os, arch, typ, os_version, download_url } = query;
     const offset = (current - 1) * pageSize;
 
     const queryBuilder = this.softwareRepo.createQueryBuilder('software');
     if (os) queryBuilder.andWhere('software.os = :os', { os });
     if (arch) queryBuilder.andWhere('software.arch = :arch', { arch });
     if (typ) queryBuilder.andWhere('software.typ = :typ', { typ });
+    if (os_version) queryBuilder.andWhere('software.os_version = :os_version', { os_version });
+    if (download_url) queryBuilder.andWhere('software.download_url = :download_url', { download_url });
 
     const [list, total] = await queryBuilder
       .skip(offset)

@@ -25,4 +25,28 @@ export class QueryReviewDto {
   @IsOptional()
   @IsString()
   end_time?: string; // 结束时间（YYYY-MM-DD HH:mm:ss）
+
+  @IsOptional()
+  @IsString()
+  os?: string;
+
+  @IsOptional()
+  @IsString()
+  arch?: string;
+
+  @IsOptional()
+  @IsString()
+  typ?: string;
+
+  @IsOptional()
+  @IsString()
+  os_version?: string;
+
+  @IsOptional()
+  @IsString()
+  download_url?: string;
+
+  // @IsOptional()
+  // @IsString()
+  // updated_at?: string;
 }

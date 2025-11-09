@@ -25,4 +25,16 @@ export class QuerySoftwareDto {
   @IsOptional()
   @IsString()
   typ?: string;
+
+  @IsOptional()
+  @IsString()
+  os_version?: string;
+
+  @IsOptional()
+  @IsString()
+  download_url?: string;
+
+  // @IsOptional()
+  // @IsString()
+  // updated_at?: string;
 }
