@@ -12,7 +12,7 @@ export class ReviewEntity {
   download_url: string;
 
   @CreateDateColumn({ name: 'response_time', type: 'datetime', comment: '响应时间' })
-  responseTime: Date;
+  response_time: Date;
 
   @Column({ comment: '操作系统' })
   os: string;

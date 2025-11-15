@@ -18,8 +18,8 @@ export class ReviewService {
 
     const queryBuilder = this.reviewRepo.createQueryBuilder('review');
     if (device_id) queryBuilder.andWhere('review.device_id = :device_id', { device_id: device_id });
-    if (start_time) queryBuilder.andWhere('review.responseTime >= :startTime', { startTime: start_time });
-    if (end_time) queryBuilder.andWhere('review.responseTime <= :endTime', { endTime: end_time });
+    if (start_time) queryBuilder.andWhere('review.response_time >= :startTime', { startTime: start_time });
+    if (end_time) queryBuilder.andWhere('review.response_time <= :endTime', { endTime: end_time });
     if (os) queryBuilder.andWhere('review.os = :os', { os });
     if (arch) queryBuilder.andWhere('review.arch = :arch', { arch });
     if (typ) queryBuilder.andWhere('review.typ = :typ', { typ });
@@ -29,7 +29,7 @@ export class ReviewService {
     const [list, total] = await queryBuilder
       .skip(offset)
       .take(pageSize)
-      .orderBy('review.responseTime', 'DESC')
+      .orderBy('review.response_time', 'DESC')
       .getManyAndCount();
 
     return { list, total, current, pageSize };
