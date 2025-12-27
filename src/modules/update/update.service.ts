@@ -17,20 +17,20 @@ export class UpdateService {
 
   // 处理设备更新请求
   async handleUpdateRequest(data: DeviceUpdateRequestDto) {
-    const { os, os_version, arch, device_id, typ } = data;
+    const { os, os_version, arch, id, typ } = data;
 
     // 1. 查找匹配的软件配置
     const software = await this.softwareService.findMatch(os, os_version, arch, typ);
     if (!software) throw new NotFoundException('未找到匹配的软件下载地址');
 
     // 2. 保存设备请求记录（首次请求时新增）
-    const existingDevice = await this.deviceRepo.findOneBy({ device_id: device_id });
+    const existingDevice = await this.deviceRepo.findOneBy({ id });
     if (!existingDevice) {
       const device = this.deviceRepo.create({
         os,
         os_version: os_version,
         arch,
-        device_id: device_id,
+        id,
         typ,
       });
       await this.deviceRepo.save(device);
@@ -38,7 +38,7 @@ export class UpdateService {
 
     // 3. 保存审查记录
     await this.reviewService.create({
-      device_id: device_id,
+      id,
       download_url: software.download_url,
       os,
       os_version: os_version,

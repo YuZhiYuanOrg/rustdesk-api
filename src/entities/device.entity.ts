@@ -1,8 +1,8 @@
-import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn } from 'typeorm';
+import { Entity, Column, PrimaryColumn, CreateDateColumn } from 'typeorm';
 
 @Entity('device') // 数据库表名
 export class DeviceEntity {
-  @PrimaryGeneratedColumn('uuid') // UUID主键
+  @PrimaryColumn({ comment: '设备唯一标识' })
   id: string;
 
   @Column({ comment: '操作系统' })
@@ -13,9 +13,6 @@ export class DeviceEntity {
 
   @Column({ comment: '架构' })
   arch: string;
-
-  @Column({ name: 'device_id', comment: '设备唯一标识' })
-  device_id: string;
 
   @Column({ comment: '软件类型' })
   typ: string;
