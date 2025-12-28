@@ -46,11 +46,11 @@ export class UpdateService {
       typ,
     });
 
-    // 4. 返回结果（版本可选，这里默认返回空）
+    // 4. 返回结果
     return {
       download_url: software.download_url,
       message: '更新地址获取成功',
-      version: '', // 可根据实际需求从software表扩展version字段
+      version: software.version, // 从软件配置中获取版本号
     };
   }
 }
