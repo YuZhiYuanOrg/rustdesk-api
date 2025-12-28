@@ -7,6 +7,7 @@ import { DeviceModule } from './modules/device/device.module';
 import { SoftwareModule } from './modules/software/software.module';
 import { ReviewModule } from './modules/review/review.module';
 import { UpdateModule } from './modules/update/update.module';
+import { AuthModule } from './modules/auth/auth.module';
 
 @Module({
   imports: [
@@ -19,6 +20,7 @@ import { UpdateModule } from './modules/update/update.module';
     SoftwareModule,
     ReviewModule,
     UpdateModule,
+    AuthModule,
   ],
 })
 export class AppModule {}
