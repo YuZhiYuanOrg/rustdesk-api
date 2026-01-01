@@ -21,6 +21,10 @@ export class CreateSoftwareDto {
   @IsString()
   download_url: string;
 
+  @IsNotEmpty({ message: '版本号不能为空' })
+  @IsString()
+  version: string;
+
   @IsOptional()
   @IsString()
   description?: string;

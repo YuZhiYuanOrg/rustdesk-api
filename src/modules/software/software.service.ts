@@ -59,6 +59,7 @@ export class SoftwareService {
     if (data.typ) updateData['typ'] = data.typ;
     if (data.download_url) updateData['download_url'] = data.download_url;
     if (data.description !== undefined) updateData['description'] = data.description;
+    if (data.version) updateData['version'] = data.version;
 
     await this.softwareRepo.update(id, updateData);
     return null;
@@ -73,10 +74,19 @@ export class SoftwareService {
     return null;
   }
 
-  // 按设备信息匹配软件配置（供更新请求使用）
+  // 按设备信息匹配最新版本软件配置（供更新请求使用）
   async findMatch(os: string, os_version: string, arch: string, typ: string) {
-    return this.softwareRepo.findOne({
-      where: { os, os_version, arch, typ },
-    });
-  }
+  // 查询条件：匹配os、os_version、arch、typ
+  // 排序：按version降序（确保最新版本在前）
+  // 取第一条记录
+  return this.softwareRepo
+    .createQueryBuilder('software')
+    .where('software.os = :os', { os })
+    .andWhere('software.os_version = :os_version', { os_version })
+    .andWhere('software.arch = :arch', { arch })
+    .andWhere('software.typ = :typ', { typ })
+    .orderBy('software.version', 'DESC') // 按版本号降序
+    .limit(1) // 只取最新版本
+    .getOne();
+}
 }

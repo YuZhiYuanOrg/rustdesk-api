@@ -15,7 +15,7 @@ export class DeviceUpdateRequestDto {
 
   @IsNotEmpty({ message: '设备唯一标识不能为空' })
   @IsString()
-  device_id: string;
+  id: string;
 
   @IsNotEmpty({ message: '软件类型不能为空' })
   @IsString()

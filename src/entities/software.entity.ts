@@ -20,6 +20,9 @@ export class SoftwareEntity {
   @Column({ name: 'download_url', comment: '软件下载地址' })
   download_url: string;
 
+  @Column({ comment: '软件版本' })
+  version: string;
+
   @Column({ comment: '配置描述', nullable: true })
   description?: string;
 

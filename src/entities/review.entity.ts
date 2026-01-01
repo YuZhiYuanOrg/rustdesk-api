@@ -3,10 +3,10 @@ import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn } from 'typeor
 @Entity('review')
 export class ReviewEntity {
   @PrimaryGeneratedColumn('uuid')
-  id: string;
+  uuid: string;
 
-  @Column({ name: 'device_id', comment: '设备唯一标识' })
-  device_id: string;
+  @Column({ name: 'id', comment: '设备唯一标识' })
+  id: string;
 
   @Column({ name: 'download_url', comment: '返回的下载地址' })
   download_url: string;

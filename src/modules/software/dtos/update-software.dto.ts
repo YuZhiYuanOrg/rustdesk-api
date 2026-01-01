@@ -24,4 +24,8 @@ export class UpdateSoftwareDto {
   @IsOptional()
   @IsString()
   description?: string;
+
+  @IsOptional()
+  @IsString()
+  version?: string;
 }
